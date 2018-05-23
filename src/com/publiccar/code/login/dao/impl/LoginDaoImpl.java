@@ -14,11 +14,11 @@ import framework.base.BaseDao;
 @Repository
 public class LoginDaoImpl extends BaseDao implements LoginDaoInter{
 	
-	public List<User> getUserByName(String userName) {
+	public List<User> getUserByName(String getUserUsername) {
 		Session session = this.getSession();
-		String hql="from User where userName=?";
+		String hql="from User where userUsername=?";
 		Query query = session.createQuery(hql);
-		query.setString(0,userName);
+		query.setString(0,getUserUsername);
 		List<User> userList = query.list();
 		return userList;
 	}

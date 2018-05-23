@@ -14,7 +14,7 @@ public class BaseDao {
 	private SessionFactory sessionFactory;
 	
 	public Session getSession(){
-		return sessionFactory.openSession();
+		return sessionFactory.getCurrentSession();
 	}
 
 }

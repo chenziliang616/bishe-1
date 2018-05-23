@@ -1,6 +1,6 @@
 package com.publiccar.code.model;
 // default package
-// Generated 2018-5-19 23:06:20 by Hibernate Tools 4.0.1.Final
+// Generated 2018-5-23 12:46:47 by Hibernate Tools 4.0.1.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,19 +17,30 @@ import javax.persistence.Table;
 public class User implements java.io.Serializable {
 
 	private Integer userId;
-	private String userName;
+	private Integer dempId;
+	private String userUsername;
 	private String userPassword;
 	private String userIdentity;
-	private Double userAge;
+	private String userName;
+	private String userSex;
+	private Integer userAge;
+	private String userDemp;
+	private String userMoney;
 
 	public User() {
 	}
 
-	public User(String userName, String userPassword, String userIdentity, Double userAge) {
-		this.userName = userName;
+	public User(Integer dempId, String userUsername, String userPassword, String userIdentity, String userName,
+			String userSex, Integer userAge, String userDemp, String userMoney) {
+		this.dempId = dempId;
+		this.userUsername = userUsername;
 		this.userPassword = userPassword;
 		this.userIdentity = userIdentity;
+		this.userName = userName;
+		this.userSex = userSex;
 		this.userAge = userAge;
+		this.userDemp = userDemp;
+		this.userMoney = userMoney;
 	}
 
 	@Id
@@ -44,13 +55,22 @@ public class User implements java.io.Serializable {
 		this.userId = userId;
 	}
 
-	@Column(name = "user_name", length = 100)
-	public String getUserName() {
-		return this.userName;
+	@Column(name = "demp_id")
+	public Integer getDempId() {
+		return this.dempId;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setDempId(Integer dempId) {
+		this.dempId = dempId;
+	}
+
+	@Column(name = "user_username", length = 100)
+	public String getUserUsername() {
+		return this.userUsername;
+	}
+
+	public void setUserUsername(String userUsername) {
+		this.userUsername = userUsername;
 	}
 
 	@Column(name = "user_password", length = 100)
@@ -71,13 +91,49 @@ public class User implements java.io.Serializable {
 		this.userIdentity = userIdentity;
 	}
 
-	@Column(name = "user_age", precision = 22, scale = 0)
-	public Double getUserAge() {
+	@Column(name = "user_name")
+	public String getUserName() {
+		return this.userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	@Column(name = "user_sex")
+	public String getUserSex() {
+		return this.userSex;
+	}
+
+	public void setUserSex(String userSex) {
+		this.userSex = userSex;
+	}
+
+	@Column(name = "user_age")
+	public Integer getUserAge() {
 		return this.userAge;
 	}
 
-	public void setUserAge(Double userAge) {
+	public void setUserAge(Integer userAge) {
 		this.userAge = userAge;
+	}
+
+	@Column(name = "user_demp")
+	public String getUserDemp() {
+		return this.userDemp;
+	}
+
+	public void setUserDemp(String userDemp) {
+		this.userDemp = userDemp;
+	}
+
+	@Column(name = "user_money")
+	public String getUserMoney() {
+		return this.userMoney;
+	}
+
+	public void setUserMoney(String userMoney) {
+		this.userMoney = userMoney;
 	}
 
 }

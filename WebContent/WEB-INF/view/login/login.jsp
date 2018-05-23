@@ -1,27 +1,37 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>MIS登录界面</title>
-	<link rel="stylesheet" href="css/pintuer.css">
-    <link rel="stylesheet" href="css/admin.css">
-    <link rel="stylesheet" href="css/layer.css">
-    <script src="js/jquery.js"></script>
-    <script src="js/pintuer.js"></script>
-    <script src="js/layer.js"></script>
+<title>登录界面</title>
+	<link rel="stylesheet" href="<%=path %>/css/pintuer.css">
+    <link rel="stylesheet" href="<%=path %>/css/admin.css">
+    <link rel="stylesheet" href="<%=path %>/css/layer.css">
+    <script src="<%=path %>/js/jquery.js"></script>
+    <script src="<%=path %>/js/pintuer.js"></script>
+    <script src="<%=path %>/js/layer.js"></script>
     <script type="text/javascript">
 	function toLogin(){
-		var username = $("#username").val();
+		var userusername = $("#userusername").val();
 		var userpassword = $("#userpassword").val();
 		
-		$.post("loginCtrl/login",{
-		"userName":username,
+		$.post("<%=path %>/loginCtrl/login",{
+		"userUsername":userusername,
 		"userPassword":userpassword},function(result){
 			if(result.result){
 				if(result.useridentity=="管理员"){
 					window.location.href="";
+				}else if(result.useridentity=="驾驶员"){
+					window.location.href="<%=path %>/common/officials/index";
+				}else if(result.useridentity=="车辆部门负责人"){
+					window.location.href="";
+				}else if(result.useridentity=="用车官员"){
+					window.location.href="<%=path %>/common/officials/index";
 				}
 				layer.msg(result.mess,{icon:6});
 			}else{
@@ -41,7 +51,7 @@
 	
 	</script>  
 </head>
-<body style="background-image: url(images/blue.jpg)">
+<body style="background-image: url(<%=path %>/images/blue.jpg)">
 	<div class="bg"></div>
 	<div class="container">
 		<div class="line bouncein">
@@ -50,13 +60,13 @@
 				<div class="media media-y margin-big-bottom"></div>
 					<div class="panel loginbox">
 						<div class="text-center margin-big padding-big-top">
-							<h1>某某管理中心</h1>
+							<h1>政府车辆管理中心</h1>
 						</div>
 						<div class="panel-body"
 							style="padding: 30px; padding-bottom: 10px; padding-top: 10px;">
 							<div class="form-group">
 								<div class="field field-icon-right">
-									<input type="text" class="input input-big" id="username"
+									<input type="text" class="input input-big" id="userusername"
 										placeholder="登录账号" data-validate="required:请填写账号" /> <span
 										class="icon icon-user margin-small"></span>
 								</div>
